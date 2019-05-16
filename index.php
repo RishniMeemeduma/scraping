@@ -1,5 +1,5 @@
 <?php
-$html = file_get_contents('http://pokemondb.net/evolution'); //get the html returned from the following url
+$html = file_get_contents('https://www.bbc.com/'); //get the html returned from the following url
 
 $pokemon_doc = new DOMDocument();
 
@@ -13,12 +13,21 @@ if(!empty($html)){ //if any html is actually returned
 	$pokemon_xpath = new DOMXPath($pokemon_doc);
 
 	//get all the h2's with an id
-	$pokemon_row = $pokemon_xpath->query('//a[@class="ent-name"]');
+	$array1= array()
+	$pokemon_row = $pokemon_xpath->query('//h3[@class="media__content"]');
 
-	if($pokemon_row->length > 0){
-		foreach($pokemon_row as $row){
-			echo $row->nodeValue . "<br/>";
+	if($pokemon_row->length>0){
+
+		foreach ($pokemon_row as $value) {
+			
+			$title = $pokemon_xpath->query('//h3[@class="media__title"]');
+			$content =$pokemon_xpath->query('//p[@class="media__summary"]');
+
+			$array1[]= array('title'=>$title,'content'=>$content);
+
 		}
 	}
+
+	print_r($array1);
 }
 ?>
