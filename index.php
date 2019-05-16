@@ -23,7 +23,7 @@ if(!empty($html)){ //if any html is actually returned
 			$title = $pokemon_xpath->query('//h3[@class="media__title"]');
 			$content =$pokemon_xpath->query('//p[@class="media__summary"]');
 
-			$array1[]= array('title'=>$title,'content'=>$content);
+			$array1[]= array('title'=>$title->nodeValue,'content'=>$content->nodeValue);
 			
 
 		}
