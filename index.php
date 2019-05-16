@@ -24,6 +24,7 @@ if(!empty($html)){ //if any html is actually returned
 			$content =$pokemon_xpath->query('//p[@class="media__summary"]');
 
 			$array1[]= array('title'=>$title,'content'=>$content);
+			echo "Hi";
 
 		}
 	}
