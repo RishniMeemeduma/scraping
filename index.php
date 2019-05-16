@@ -18,17 +18,17 @@ if(!empty($html)){ //if any html is actually returned
 
 	if($pokemon_row->length>0){
 
-		foreach ($pokemon_row as $value) {
+		// foreach ($pokemon_row as $value) {
 			
-			$title = $pokemon_xpath->query('//h3[@class="media__title"]');
-			$content =$pokemon_xpath->query('//p[@class="media__summary"]');
+		// 	$title = $pokemon_xpath->query('//h3[@class="media__title"]');
+		// 	$content =$pokemon_xpath->query('//p[@class="media__summary"]');
 
-			$array1[]= array('title'=>$title,'content'=>$content);
+		// 	$array1[]= array('title'=>$title,'content'=>$content);
 			echo "Hi";
 
-		}
+		// }
 	}
 
-	print_r($array1);
+	// print_r($array1);
 }
 ?>
