@@ -20,8 +20,8 @@ if(!empty($html)){ //if any html is actually returned
 
 		foreach ($pokemon_row as $value) {
 			
-			$title = $pokemon_xpath->query('//h3[@class="media__title"]',$value)->item(0)->nodeValue;
-			$content =$pokemon_xpath->query('//p[@class="media__summary"]',$value)->item(0)->nodeValue;
+			$title = $pokemon_xpath->query('//h3[@class="media__title"]',$value)->item()->nodeValue;
+			$content =$pokemon_xpath->query('//p[@class="media__summary"]',$value)->item()->nodeValue;
 
 			$array1[]= array('title'=>$title,'content'=>$content);
 			
