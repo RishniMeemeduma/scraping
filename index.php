@@ -13,7 +13,7 @@ if(!empty($html)){
 
 	$xpath = new DOMXPATH($doc);
 
-	$row = $xpath ->query('//h2[@id]');
+	$row = $xpath->query('//h2[@id]');
 
 	if($row->length > 0){
 		foreach($row as $row){
