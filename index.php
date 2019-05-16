@@ -1,23 +1,24 @@
 <?php
+$html = file_get_contents('http://pokemondb.net/evolution'); //get the html returned from the following url
 
-$html = file_get_contents('http://pokemondb.net/evolution');
+$pokemon_doc = new DOMDocument();
 
-$doc = new DOMDocument();
+libxml_use_internal_errors(TRUE); //disable libxml errors
 
-libxml_use_internal_errors(TRUE);
+if(!empty($html)){ //if any html is actually returned
 
-if(!empty($html)){
+	$pokemon_doc->loadHTML($html);
+	libxml_clear_errors(); //remove errors for yucky html
+	
+	$pokemon_xpath = new DOMXPath($pokemon_doc);
 
-	$doc->loadHTML($html);
-	libxml_clear_errors();
+	//get all the h2's with an id
+	$pokemon_row = $pokemon_xpath->query('//h2[@id]');
 
-	$xpath = new DOMXPATH($doc);
-
-	$row = $xpath->query('//h2[@id]');
-
-	if($row->length > 0){
-		foreach($row as $row){
+	if($pokemon_row->length > 0){
+		foreach($pokemon_row as $row){
 			echo $row->nodeValue . "<br/>";
 		}
 	}
 }
+?>
