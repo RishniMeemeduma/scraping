@@ -13,7 +13,7 @@ if(!empty($html)){ //if any html is actually returned
 	$pokemon_xpath = new DOMXPath($pokemon_doc);
 
 	//get all the h2's with an id
-	$pokemon_row = $pokemon_xpath->query('//h2]');
+	$pokemon_row = $pokemon_xpath->query('//h2');
 
 	if($pokemon_row->length > 0){
 		foreach($pokemon_row as $row){
