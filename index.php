@@ -15,5 +15,9 @@ if(!empty($html)){
 
 	$row = $xpath ->query('//h2[@id]');
 
-	echo $row->nodeValue ."<br>";
+	if($row->length > 0){
+		foreach($row as $row){
+			echo $row->nodeValue . "<br/>";
+		}
+	}
 }
