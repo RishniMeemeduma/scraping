@@ -19,14 +19,13 @@ if(!empty($html)){ //if any html is actually returned
 	if($pokemon_row->length>0){
 
 		foreach ($pokemon_row as $value) {
-			for($i=0;$i<count($array1);$i++){
 			
-			$title = $pokemon_xpath->query('//h3[@class="media__title"]',$value)->item($i)->nodeValue;
-			$content =$pokemon_xpath->query('//p[@class="media__summary"]',$value)->item($i)->nodeValue;
+			
+			$title = $pokemon_xpath->query('//h3[@class="media__title"]',$value)->item(0)->nodeValue;
+			$content =$pokemon_xpath->query('//p[@class="media__summary"]',$value)->item(0)->nodeValue;
 
 			$array1[]= array('title'=>$title,'content'=>$content);
-			}
-
+			
 		}
 	}
 echo "<pre>";
