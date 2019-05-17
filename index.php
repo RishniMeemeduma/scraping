@@ -14,7 +14,7 @@ if(!empty($html)){ //if any html is actually returned
 
 	//get all the h2's with an id
 	$array1= array();
-	$pokemon_row = $pokemon_xpath->query('//li[@class="media-list__item"]');
+	$pokemon_row = $pokemon_xpath->query('//div[@class="media__content"]');
 
 	if($pokemon_row->length>0){
 
@@ -30,6 +30,7 @@ if(!empty($html)){ //if any html is actually returned
 		}
 	}
 echo "<pre>";
-	print_r($array1);echo "</pre>";
+	print_r($array1);
+echo "</pre>";
 }
 ?>
