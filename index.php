@@ -22,7 +22,7 @@ if(!empty($html)){ //if any html is actually returned
 		foreach ($pokemon_row as $value) {
 			
 			for($i = 0;$i<count($array1) ;$i++){
-				$image = item($i)->getAttribute('src');
+				$image = $pokemon_xpath->query('//img',$value)->item($i)->nodeValue;
 			$title = $pokemon_xpath->query('//h3[@class="media__title"]',$value)->item($i)->nodeValue;
 			$content =$pokemon_xpath->query('//p[@class="media__summary"]',$value)->item($i)->nodeValue;
 		}
