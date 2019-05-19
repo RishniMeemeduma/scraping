@@ -23,7 +23,7 @@ if(!empty($html)){
 
 	 		$image = $path->query('//img/@src',$row)->item($i)->nodeValue;
 
-	 		$desc = $path->query('//span[@class="cd__headline-text"]',$row)->item[$i]->nodeValue;
+	 		$desc = $path->query('//span[@class="cd__headline-text"]',$row)->item($i)->nodeValue;
 	 		}
 	 		$array[]= array('title'=>$title,'image'=> $image,'content'=>$desc);
 	 	
