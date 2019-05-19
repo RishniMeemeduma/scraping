@@ -1,4 +1,7 @@
 <?php
+rror_reporting(E_ALL);
+ ini_set('display_errors', 1); 
+
 $html = file_get_contents('https://edition.cnn.com/');
 
 $doc = new DOMDocument();
