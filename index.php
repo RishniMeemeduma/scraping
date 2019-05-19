@@ -19,18 +19,19 @@ if(!empty($html)){
 	 $row =$path->query('//div[@class="zn__containers"]');
 
 	 if($row->length >0){
-	 foreach($row as $row){
-	 	if($i=0; $i< count($array);$i++){
+	 // foreach($row as $row){
+	 // 	if($i=0; $i< count($array);$i++){
 
-	 		$title = $path->query('//h2[@class="banner-text screaming-banner-text banner-text-size--char-35"]',$row)->item($i)->nodeValue;
+	 // 		$title = $path->query('//h2[@class="banner-text screaming-banner-text banner-text-size--char-35"]',$row)->item($i)->nodeValue;
 
-	 		$image = $path->query('//img/@src',$row)->item($i)->nodeValue;
+	 // 		$image = $path->query('//img/@src',$row)->item($i)->nodeValue;
 
-	 		$desc = $path->query('//span[@class="cd__headline-text"]',$row)->item($i)->nodeValue;
-	 		}
-	 		$array[]= array('title'=>$title,'image'=> $image,'content'=>$desc);
+	 // 		$desc = $path->query('//span[@class="cd__headline-text"]',$row)->item($i)->nodeValue;
+	 // 		}
+	 // 		$array[]= array('title'=>$title,'image'=> $image,'content'=>$desc);
 	 	
-	 }
+	 // }
+	 	echo "Hi";
 	 }
 	 echo "<pre>";
 	 print_r($array);
