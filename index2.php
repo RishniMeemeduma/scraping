@@ -15,7 +15,7 @@ if(!empty($html)){
 	 $array=array();
 	 $row =$path->query('//div[@class="zn__containers"]');
 
-	 foreach($row as $row){
+	 if($row->length >0){	 foreach($row as $row){
 	 	if($i=0; $i< count($array);$i++){
 
 	 		$title = $path->query('//h2[@class="banner-text screaming-banner-text banner-text-size--char-35"]',$row)->item($i)->nodeValue;
@@ -23,7 +23,7 @@ if(!empty($html)){
 	 		$image = $path->query('//img/@src',$row)->item($i)->nodeValue;
 
 	 		$desc = $path->query('//span[@class="cd__headline-text"]',$row)->item[$i]->nodeValue;
-
+	 		}
 	 		$array[]= array('title'=>$title,'image'=> $image,'content'=>$desc);
 	 	}
 	 }
