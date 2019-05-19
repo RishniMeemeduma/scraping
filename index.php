@@ -3,14 +3,14 @@ $html = file_get_contents('https://edition.cnn.com/');
 
 $doc = new DOMDocument();
 
-libxml_use_internal_errors(True);
+libxml_use_internal_errors(TRUE);
 
 if(!empty($html)){
 
 	 $doc ->loadHTML($html);
 	 libxml_clear_errors();
 
-	 $path = new DOMXPath();
+	 $path = new DOMXPath($doc);
 
 	 $array=array();
 	 $row =$path->query('//div[@class="zn__containers"]');
