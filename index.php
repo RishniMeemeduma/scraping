@@ -1,41 +1,37 @@
 <?php
-error_reporting(E_ALL);
- ini_set('display_errors', 1); 
+$html = file_get_contents('https://edition.cnn.com/'); //get the html returned from the following url
 
-$html = file_get_contents('https://edition.cnn.com/');
+$pokemon_doc = new DOMDocument();
 
-$doc = new DOMDocument();
+libxml_use_internal_errors(TRUE); //disable libxml errors
 
-libxml_use_internal_errors(TRUE);
+if(!empty($html)){ //if any html is actually returned
 
-if(!empty($html)){
+	$pokemon_doc->loadHTML($html);
+	libxml_clear_errors(); //remove errors for yucky html
+	
+	$pokemon_xpath = new DOMXPath($pokemon_doc);
 
-	 $doc ->loadHTML($html);
-	 libxml_clear_errors();
+	//get all the h2's with an id
+	$array1= array();
+	$pokemon_row = $pokemon_xpath->query('//div[@class="media media--overlay block-link"]');
+	
 
-	 $path = new DOMXPath($doc);
+	if($pokemon_row->length>0){
 
-	 $array=array();
-	 $row =$path->query('//div[@class="zn__containers"]');
-
-	 if($row->length >0){
-	 // foreach($row as $row){
-	 // 	if($i=0; $i< count($array);$i++){
-
-	 // 		$title = $path->query('//h2[@class="banner-text screaming-banner-text banner-text-size--char-35"]',$row)->item($i)->nodeValue;
-
-	 // 		$image = $path->query('//img/@src',$row)->item($i)->nodeValue;
-
-	 // 		$desc = $path->query('//span[@class="cd__headline-text"]',$row)->item($i)->nodeValue;
-	 // 		}
-	 // 		$array[]= array('title'=>$title,'image'=> $image,'content'=>$desc);
-	 	
-	 // }
-	 	echo "Hi";
-	 }
-	 echo "<pre>";
-	 print_r($array);
-	 echo "</pre>";
-
-
+		foreach ($pokemon_row as $value) {
+			
+			for($i = 0;$i<count($array1) ;$i++){
+				$image = $pokemon_xpath->query('//img/@src',$value)->item($i)->nodeValue;
+			$title = $pokemon_xpath->query('//h3[@class="media__title"]',$value)->item($i)->nodeValue;
+			$content =$pokemon_xpath->query('//p[@class="media__summary"]',$value)->item($i)->nodeValue;
+		}
+			$array1[]= array('image'=>$image,'title'=>$title,'content'=>$content);
+			
+		}
+	}
+echo "<pre>";
+	print_r($array1);
+echo "</pre>";
 }
+?>

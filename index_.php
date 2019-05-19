@@ -1,5 +1,5 @@
 <?php
-$html = file_get_contents('https://edition.cnn.com/'); //get the html returned from the following url
+$html = file_get_contents(''); //get the html returned from the following url
 
 $pokemon_doc = new DOMDocument();
 
